@@ -2,17 +2,8 @@
 import { Head, Link } from '@inertiajs/vue3';
 import Layout from '@/Layouts/MainLayout.vue';
 import Button from '@/Components/ui/button/Button.vue';
-import Input from '@/Components/ui/input/Input.vue';
 
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from '@/Components/ui/dialog'
+import Login from '@/Components/Main/AuthModal/Login.vue';
 </script>
 
 <template>
@@ -29,30 +20,9 @@ import {
                     Stay casino
                 </h1>
                 <div>
-                    <Dialog>
-                        <DialogTrigger>
-                            <Button class="bg-[#1375E1] text-white py-6 hover:bg-blue-500">Зарегистрироваться</Button>
-                        </DialogTrigger>
-                        <DialogContent class="bg-[#061724]">
-                            <DialogHeader class="space-y-4 mb-6">
-                                <DialogTitle class="text-center">Welcome back!</DialogTitle>
-                                <DialogDescription class="text-center">
-                                    First time here? <a href="#!" class="text-blue-600">Sign in</a>
-                                </DialogDescription>
-                            </DialogHeader>
-
-                            <form action="" class="space-y-4">
-                                <Input placeholder="Email" class="shadow shadow-black border-0 bg-[#0C202E]" />
-                                <Input placeholder="Password" type="password"
-                                    class="shadow shadow-black border-0 bg-[#0C202E]" />
-                                <Button type="submit" class="w-full bg-[#1375E1] text-white">Sign in</Button>
-                            </form>
-
-                            <DialogFooter>
-                                <!--  -->
-                            </DialogFooter>
-                        </DialogContent>
-                    </Dialog>
+                    <Login>
+                        <Button class="bg-[#1375E1] text-white py-6 hover:bg-blue-500">Зарегистрироваться</Button>
+                    </Login>
                 </div>
                 <div>
                     <h2>или войти с помощью</h2>

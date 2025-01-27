@@ -78,6 +78,8 @@ import {
     PieChart,
     Plus,
     Settings2,
+    Spade,
+    SpadeIcon,
     Sparkles,
     SquareTerminal,
     Trash2,
@@ -218,12 +220,12 @@ const data = {
 
 <template>
     <SidebarProvider class="bg-[#0C202E] relative">
-
         <Sidebar collapsible="icon">
-            <SidebarTrigger class="-right-3 top-[15%] absolute z-40" />
+            <SidebarTrigger class="-right-4 top-[15%] absolute z-40 hover:bg-transparent w-7 h-7" />
             <SidebarHeader class="mb-5 shadow-md shadow-black/40">
                 <div class="w-full py-3 flex justify-center items-center">
-                    <div class="w-8 h-8 bg-white rounded-full"></div>
+                    <!-- <div class="w-8 h-8 bg-white rounded-full"></div> -->
+                    <SpadeIcon class="" />
                 </div>
             </SidebarHeader>
             <SidebarContent>
@@ -256,28 +258,34 @@ const data = {
                         </Collapsible>
                     </SidebarMenu>
                 </SidebarGroup>
-                <SidebarGroup v-else class="px-4">
-                    <form class="w-full h-auto py-5 border-b border-[#1375E1] space-y-4">
+                <SidebarGroup v-else class="p-4 border-b border-[#1375E1] space-y-4">
+                    <SidebarGroupLabel class="px-0 text-lg inline text-center">Авторизация</SidebarGroupLabel>
+                    <h3 class="text-center">Авторизируйтесь, чтобы начать играть прямо сейчас!</h3>
+                    <Button class="bg-[#1375E1] text-white hover:bg-blue-500">Войти в аккаунт</Button>
+                    <!-- <form class="w-full h-auto py-5 border-b border-[#1375E1] space-y-4">
                         <SidebarGroupLabel class="px-0 text-lg">Авторизация</SidebarGroupLabel>
                         <div :class="cn(
                             'duration-200',
                             'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
                             props.class)">
                             <Label>Электронная почта</Label>
-                            <Input type="text" class="bg-[#D6D6D6] border-transparent text-black" />
+                            <Input type="email"
+                                class="bg-[#0C202E] shadow shadow-black transition-all focus:shadow-md border-transparent"
+                                required />
                         </div>
                         <div :class="cn(
                             'duration-200',
                             'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
                             props.class)">
                             <Label>Пароль</Label>
-                            <Input type="password" class="bg-[#D6D6D6] border-transparent text-black" />
+                            <Input type="password" class="bg-[#0C202E] shadow shadow-black border-transparent"
+                                required />
                         </div>
                         <Button type="submit" class="w-full" :class="cn(
                             'duration-200',
-                            'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
+                            'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0 bg-[#1375E1] text-white hover:bg-blue-500',
                             props.class)">Войти</Button>
-                    </form>
+                    </form> -->
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Button from '../ui/button/Button.vue';
-
-
+import Login from './AuthModal/Login.vue';
+import Register from './AuthModal/Register.vue';
 </script>
 
 <template>
@@ -11,8 +11,12 @@ import Button from '../ui/button/Button.vue';
             NORMAL
         </div>
         <div class="space-x-4">
-            <Button variant="link">Войти</Button>
-            <Button class="bg-[#1375E1] text-white hover:bg-blue-500">Зарегистрироваться</Button>
+            <Login>
+                <Button variant="link">Войти</Button>
+            </Login>
+            <Register>
+                <Button class="bg-[#1375E1] text-white hover:bg-blue-500">Зарегистрироваться</Button>
+            </Register>
         </div>
     </header>
 </template>
