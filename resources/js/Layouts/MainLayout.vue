@@ -271,30 +271,6 @@ const data = {
                         'duration-100',
                         'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
                         props.class)">Войти в аккаунт</Button>
-                    <!-- <form class="w-full h-auto py-5 border-b border-[#1375E1] space-y-4">
-                        <SidebarGroupLabel class="px-0 text-lg">Авторизация</SidebarGroupLabel>
-                        <div :class="cn(
-                            'duration-200',
-                            'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
-                            props.class)">
-                            <Label>Электронная почта</Label>
-                            <Input type="email"
-                                class="bg-[#0C202E] shadow shadow-black transition-all focus:shadow-md border-transparent"
-                                required />
-                        </div>
-                        <div :class="cn(
-                            'duration-200',
-                            'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
-                            props.class)">
-                            <Label>Пароль</Label>
-                            <Input type="password" class="bg-[#0C202E] shadow shadow-black border-transparent"
-                                required />
-                        </div>
-                        <Button type="submit" class="w-full" :class="cn(
-                            'duration-200',
-                            'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0 bg-[#1375E1] text-white hover:bg-blue-500',
-                            props.class)">Войти</Button>
-                    </form> -->
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter>

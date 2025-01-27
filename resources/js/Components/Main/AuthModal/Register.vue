@@ -82,7 +82,7 @@ function onSubmit(values: any) {
         <DialogTrigger>
             <slot />
         </DialogTrigger>
-        <DialogContent class="bg-[#061724] p-0 gap-0 max-w-4xl">
+        <DialogContent class="bg-[#061724] p-0 gap-0 max-w-4xl h-[450px]">
             <DialogHeader class="space-y-4">
                 <!-- <DialogTitle class="text-center">Welcome back!</DialogTitle>
                 <DialogDescription class="text-center">
@@ -101,7 +101,7 @@ function onSubmit(values: any) {
                             onSubmit(values)
                         }
                     }">
-                        <div class="grid grid-cols-1 w-1/3 items-start gap-2 h-full !max-h-full p-5">
+                        <div class="grid grid-cols-1 w-1/3 items-start gap-2 !max-h-full p-5 h-[450px]">
                             <StepperItem v-for="step in steps" :key="step.step" v-slot="{ state }"
                                 class="relative flex w-full gap-4 items-center" :step="step.step">
                                 <!-- <StepperSeparator v-if="step.step !== steps[steps.length - 1].step"
@@ -157,7 +157,7 @@ function onSubmit(values: any) {
                                     <FormItem>
                                         <FormControl>
                                             <Input type="email " v-bind="componentField" placeholder="Email"
-                                                class="text-black" />
+                                                class="text-black !bg-[#D6D6D6]" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -167,7 +167,7 @@ function onSubmit(values: any) {
                                     <FormItem>
                                         <FormControl>
                                             <Input type="text" v-bind="componentField" placeholder="Дата рождения"
-                                                class="text-black" />
+                                                class="text-black !bg-[#D6D6D6]" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -178,14 +178,14 @@ function onSubmit(values: any) {
                                         <FormItem class="w-1/3">
                                             <FormControl>
                                                 <Input type="text" v-bind="componentField" placeholder="Код страны"
-                                                    class="text-black" />
+                                                    class="text-black !bg-[#D6D6D6]" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
                                         <FormItem class="w-2/3">
                                             <FormControl>
-                                                <Input type="text" v-bind="secondComponentField" placeholder="Номер телефона"
-                                                    class="text-black" />
+                                                <Input type="text" v-bind="secondComponentField"
+                                                    placeholder="Номер телефона" class="text-black !bg-[#D6D6D6]" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -196,7 +196,8 @@ function onSubmit(values: any) {
                                     <FormItem>
                                         <FormControl>
                                             <Input type="text" v-bind="componentField"
-                                                placeholder="Код приглашения (Если есть)" class="text-black" />
+                                                placeholder="Код приглашения (Если есть)"
+                                                class="text-black !bg-[#D6D6D6]" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -204,11 +205,14 @@ function onSubmit(values: any) {
                             </template>
 
                             <template v-if="stepIndex === 2">
+                                <div class="text-center space-y-2">
+                                    <h2 class="font-bold text-2xl">Безопасность</h2>
+                                </div>
                                 <FormField v-slot="{ componentField }" name="password">
                                     <FormItem>
-                                        <FormLabel>Password</FormLabel>
                                         <FormControl>
-                                            <Input type="password" v-bind="componentField" class="text-black" />
+                                            <Input type="password" v-bind="componentField"
+                                                class="text-black !bg-[#D6D6D6]" placeholder="Пароль" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -216,9 +220,9 @@ function onSubmit(values: any) {
 
                                 <FormField v-slot="{ componentField }" name="confirmPassword">
                                     <FormItem>
-                                        <FormLabel>Confirm Password</FormLabel>
                                         <FormControl>
-                                            <Input type="password" v-bind="componentField" class="text-black" />
+                                            <Input type="password" v-bind="componentField"
+                                                class="text-black !bg-[#D6D6D6]" placeholder="Подтвердите пароль" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -226,45 +230,23 @@ function onSubmit(values: any) {
                             </template>
 
                             <template v-if="stepIndex === 3">
-                                <FormField v-slot="{ componentField }" name="favoriteDrink">
-                                    <FormItem>
-                                        <FormLabel>Drink</FormLabel>
-
-                                        <Select v-bind="componentField">
-                                            <FormControl>
-                                                <SelectTrigger>
-                                                    <SelectValue placeholder="Select a drink" />
-                                                </SelectTrigger>
-                                            </FormControl>
-                                            <SelectContent>
-                                                <SelectGroup>
-                                                    <SelectItem value="coffee">
-                                                        Coffe
-                                                    </SelectItem>
-                                                    <SelectItem value="tea">
-                                                        Tea
-                                                    </SelectItem>
-                                                    <SelectItem value="soda">
-                                                        Soda
-                                                    </SelectItem>
-                                                </SelectGroup>
-                                            </SelectContent>
-                                        </Select>
-                                        <FormMessage />
-                                    </FormItem>
-                                </FormField>
+                                <div class="text-center space-y-2">
+                                    <h2 class="font-bold text-2xl">Политика конфиденциальности</h2>
+                                </div>
                             </template>
-                            <div class="flex items-center justify-between mt-4">
-                                <Button :disabled="isPrevDisabled" variant="outline" size="sm" @click="prevStep()">
-                                    Back
+                            <div class="flex items-center justify-between mt-auto">
+                                <Button :disabled="isPrevDisabled" variant="outline" size="sm" @click="prevStep()"
+                                    class="px-12 py-6 text-lg bg-[#D6D6D6] text-black hover:text-black hover:bg-[#f0f0f0]">
+                                    Назад
                                 </Button>
                                 <div class="flex items-center gap-3">
                                     <Button v-if="stepIndex !== 3" :type="meta.valid ? 'button' : 'submit'"
-                                        :disabled="isNextDisabled" size="sm" @click="meta.valid && nextStep()">
-                                        Next
+                                        :disabled="isNextDisabled" size="sm" @click="meta.valid && nextStep()"
+                                        class="px-12 py-6 text-lg bg-[#1375E1] text-white hover:bg-blue-500">
+                                        Далее
                                     </Button>
                                     <Button v-if="stepIndex === 3" size="sm" type="submit">
-                                        Submit
+                                        Готово
                                     </Button>
                                 </div>
                             </div>
