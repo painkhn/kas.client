@@ -259,9 +259,18 @@ const data = {
                     </SidebarMenu>
                 </SidebarGroup>
                 <SidebarGroup v-else class="p-4 border-b border-[#1375E1] space-y-4">
-                    <SidebarGroupLabel class="px-0 text-lg inline text-center">Авторизация</SidebarGroupLabel>
-                    <h3 class="text-center">Авторизируйтесь, чтобы начать играть прямо сейчас!</h3>
-                    <Button class="bg-[#1375E1] text-white hover:bg-blue-500">Войти в аккаунт</Button>
+                    <SidebarGroupLabel class="px-0 text-lg inline text-center" :class="cn(
+                        'duration-100',
+                        'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
+                        props.class)">Авторизация</SidebarGroupLabel>
+                    <h3 class="text-center" :class="cn(
+                        'duration-100',
+                        'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
+                        props.class)">Авторизируйтесь, чтобы начать играть прямо сейчас!</h3>
+                    <Button class="bg-[#1375E1] text-white hover:bg-blue-500" :class="cn(
+                        'duration-100',
+                        'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
+                        props.class)">Войти в аккаунт</Button>
                     <!-- <form class="w-full h-auto py-5 border-b border-[#1375E1] space-y-4">
                         <SidebarGroupLabel class="px-0 text-lg">Авторизация</SidebarGroupLabel>
                         <div :class="cn(
