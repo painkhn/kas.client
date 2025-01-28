@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import Button from '@/Components/ui/button/Button.vue';
 import Input from '@/Components/ui/input/Input.vue';
+
+import 'vue3-tel-input/dist/vue3-tel-input.css'
+
 import {
     Dialog,
     DialogContent,
@@ -28,6 +31,7 @@ import * as z from 'zod'
 import Image from '@/Components/Common/Image.vue';
 import Logo from '@/Components/Common/Logo.vue';
 import Calendar from '@/Components/Common/Calendar.vue';
+import PhoneInput from '@/Components/Common/PhoneInput.vue';
 
 // Схемы валидации для каждого шага
 const formSchema = [
@@ -35,7 +39,6 @@ const formSchema = [
     z.object({
         fullName: z.string().min(2, "Имя должно содержать минимум 2 символа"),
         email: z.string().email("Некорректный email"),
-        number_code: z.string().min(1, "Выберите код страны"), // Валидация кода страны
         number: z.string().min(10, "Номер телефона должен содержать минимум 10 цифр"),
         invite_code: z.string().optional(), // Код приглашения не обязателен
     }),
@@ -198,7 +201,7 @@ const number_codes = [
                                     </p>
                                 </div>
                                 <FormField v-slot="{ componentField }" name="fullName">
-                                    <FormItem>
+                                    <FormItem v-auto-animate>
                                         <FormControl>
                                             <Input type="text" v-bind="componentField" placeholder="Имя пользователя"
                                                 class="!bg-[#D6D6D6] text-black placeholder:text-black/80" />
@@ -208,7 +211,7 @@ const number_codes = [
                                 </FormField>
 
                                 <FormField v-slot="{ componentField }" name="email">
-                                    <FormItem>
+                                    <FormItem v-auto-animate>
                                         <FormControl>
                                             <Input type="email " v-bind="componentField" placeholder="Email"
                                                 class="text-black !bg-[#D6D6D6] placeholder:text-black/80" />
@@ -220,46 +223,20 @@ const number_codes = [
                                 <FormField v-slot="{ componentField }" name="b_date">
                                     <FormItem>
                                         <FormControl>
-                                            <Calendar />
+                                            <Calendar :componentField="componentField" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
                                 </FormField>
 
-                                <div class="gap-4 w-full grid grid-cols-3">
-                                    <FormField v-slot="{ componentField }" name="number_code">
-                                        <FormItem>
-                                            <FormControl>
-                                                <Select v-bind="componentField">
-                                                    <!-- Добавлено v-bind="componentField" -->
-                                                    <SelectTrigger class="text-black !bg-[#D6D6D6]">
-                                                        <SelectValue placeholder="Код страны" class="text-black/80" />
-                                                    </SelectTrigger>
-                                                    <SelectContent>
-                                                        <SelectGroup>
-                                                            <SelectLabel>Код страны</SelectLabel>
-                                                            <SelectItem v-for="(code, index) in number_codes"
-                                                                :key="index" :value="code.id">
-                                                                {{ code.value }}
-                                                            </SelectItem>
-                                                        </SelectGroup>
-                                                    </SelectContent>
-                                                </Select>
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    </FormField>
-                                    <FormField v-slot="{ componentField }" name="number">
-                                        <FormItem class="w-full col-span-2">
-                                            <FormControl>
-                                                <Input type="text" placeholder="Номер телефона" v-bind="componentField"
-                                                    class="text-black !bg-[#D6D6D6] placeholder:text-black/80" />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    </FormField>
-
-                                </div>
+                                <FormField v-slot="{ componentField }" name="number">
+                                    <FormItem v-auto-animate>
+                                        <FormControl>
+                                            <PhoneInput v-bind="componentField" />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                </FormField>
 
                                 <FormField v-slot="{ componentField }" name="invite_code">
                                     <FormItem>
@@ -278,7 +255,7 @@ const number_codes = [
                                     <h2 class="font-bold text-2xl">Безопасность</h2>
                                 </div>
                                 <FormField v-slot="{ componentField }" name="password">
-                                    <FormItem>
+                                    <FormItem v-auto-animate>
                                         <FormControl>
                                             <Input type="password" v-bind="componentField"
                                                 class="text-black !bg-[#D6D6D6] placeholder:text-black/80"
@@ -289,7 +266,7 @@ const number_codes = [
                                 </FormField>
 
                                 <FormField v-slot="{ componentField }" name="confirmPassword">
-                                    <FormItem>
+                                    <FormItem v-auto-animate>
                                         <FormControl>
                                             <Input type="password" v-bind="componentField"
                                                 class="text-black !bg-[#D6D6D6] placeholder:text-black/80"
@@ -314,7 +291,7 @@ const number_codes = [
                                                 </label>
                                             </div>
                                         </FormControl>
-                                        <FormMessage />
+                                        <FormMessage v-auto-animate />
                                     </FormItem>
                                 </FormField>
                             </template>
@@ -338,8 +315,8 @@ const number_codes = [
                                     Назад
                                 </Button>
                                 <div class="flex items-center gap-3">
-                                    <Button v-if="stepIndex !== 4" type="button"
-                                        :disabled="!meta.valid" size="sm" @click="meta.valid && nextStep()"
+                                    <Button v-if="stepIndex !== 4" type="button" :disabled="!meta.valid" size="sm"
+                                        @click="meta.valid && nextStep()"
                                         class="px-12 py-6 text-lg bg-[#1375E1] text-white hover:bg-blue-500">
                                         Далее
                                     </Button>

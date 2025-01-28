@@ -28,10 +28,10 @@ import {
             </DialogHeader>
 
             <form action="" class="space-y-4 grid grid-cols-1">
-                <Input placeholder="Email"
-                    class="shadow shadow-black border-0 bg-[#D6D6D6] text-black placeholder:text-black/80" />
+                <Input placeholder="Email" type="email"
+                    class="shadow shadow-black border-0 bg-[#D6D6D6] text-black placeholder:text-black/80" required />
                 <Input placeholder="Password" type="password"
-                    class="shadow shadow-black border-0 bg-[#D6D6D6] text-black placeholder:text-black/80" />
+                    class="shadow shadow-black border-0 bg-[#D6D6D6] text-black placeholder:text-black/80" required />
                 <a class="text-blue-600 underline text-sm block ml-auto" href="#!">Забыли пароль?</a>
                 <div class="py-3"></div>
                 <Button type="submit" class="w-full bg-[#1375E1] text-white hover:bg-blue-500">Войти</Button>

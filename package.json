@@ -17,13 +17,17 @@
         "tailwindcss": "^3.2.1",
         "typescript": "^5.6.3",
         "vite": "^6.0",
+        "vite-svg-loader": "^5.1.0",
         "vue": "^3.4.0",
         "vue-tsc": "^2.0.24"
     },
     "dependencies": {
+        "@formkit/auto-animate": "^0.8.2",
         "@radix-icons/vue": "^1.0.0",
         "@vee-validate/zod": "^4.15.0",
         "@vueuse/core": "^12.5.0",
+        "base-vue-phone-input": "^0.1.13",
+        "circle-flags": "^1.0.1",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "lucide-vue-next": "^0.474.0",
@@ -32,6 +36,8 @@
         "tailwindcss-animate": "^1.0.7",
         "vee-validate": "^4.15.0",
         "vue-i18n": "^9.14.2",
+        "vue-tel-input": "^9.3.0",
+        "vue3-tel-input": "^1.0.4",
         "zod": "^3.24.1"
     }
 }

@@ -17,6 +17,10 @@ const df = new DateFormatter('en-US', {
 })
 
 const value = ref<DateValue>()
+
+defineProps<{
+    componentField: any
+}>()
 </script>
 
 <template>
@@ -31,7 +35,7 @@ const value = ref<DateValue>()
             </Button>
         </PopoverTrigger>
         <PopoverContent class="w-auto p-0">
-            <Calendar v-model="value" initial-focus />
+            <Calendar v-model="value" initial-focus v-bind="componentField" class="bg-[#061724]" />
         </PopoverContent>
     </Popover>
 </template>
