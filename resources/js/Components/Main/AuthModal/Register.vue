@@ -27,6 +27,7 @@ import { h, ref } from 'vue'
 import * as z from 'zod'
 import Image from '@/Components/Common/Image.vue';
 import Logo from '@/Components/Common/Logo.vue';
+import Calendar from '@/Components/Common/Calendar.vue';
 
 // Схемы валидации для каждого шага
 const formSchema = [
@@ -34,8 +35,7 @@ const formSchema = [
     z.object({
         fullName: z.string().min(2, "Имя должно содержать минимум 2 символа"),
         email: z.string().email("Некорректный email"),
-        b_date: z.string().regex(/^\d{2}\.\d{2}\.\d{4}$/, "Дата рождения должна быть в формате ДД.ММ.ГГГГ"),
-        number_code: z.string().min(1, "Выберите код страны"),
+        number_code: z.string().min(1, "Выберите код страны"), // Валидация кода страны
         number: z.string().min(10, "Номер телефона должен содержать минимум 10 цифр"),
         invite_code: z.string().optional(), // Код приглашения не обязателен
     }),
@@ -52,9 +52,10 @@ const formSchema = [
     ),
     // Шаг 3: Политика конфиденциальности
     z.object({
-        acceptTerms: z.literal(true, {
-            errorMap: () => ({ message: "Вы должны принять политику конфиденциальности" }),
-        }),
+        // acceptTerms: z.literal(true, {
+        //     errorMap: () => ({ message: "Вы должны принять политику конфиденциальности" }),
+        // }),
+        acceptTerms: z.string().min(1, "Вы должны принять политику конфиденциальности")
     }),
 ];
 
@@ -76,7 +77,7 @@ const steps = [
         description: 'Choose a drink',
     },
     {
-        step: 4,
+        step: 4
     }
 ];
 
@@ -86,6 +87,12 @@ function onSubmit(values: any) {
         description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(values, null, 2))),
     });
 }
+
+const number_codes = [
+    { id: '1', value: '1' },
+    { id: '2', value: '2' },
+    { id: '3', value: '3' },
+]
 </script>
 
 <template>
@@ -213,8 +220,7 @@ function onSubmit(values: any) {
                                 <FormField v-slot="{ componentField }" name="b_date">
                                     <FormItem>
                                         <FormControl>
-                                            <Input type="text" v-bind="componentField" placeholder="Дата рождения"
-                                                class="text-black !bg-[#D6D6D6] placeholder:text-black/80" />
+                                            <Calendar />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -224,8 +230,21 @@ function onSubmit(values: any) {
                                     <FormField v-slot="{ componentField }" name="number_code">
                                         <FormItem>
                                             <FormControl>
-                                                <Input type="text" v-bind="componentField" placeholder="Код страны"
-                                                    class="text-black !bg-[#D6D6D6] placeholder:text-black/80" />
+                                                <Select v-bind="componentField">
+                                                    <!-- Добавлено v-bind="componentField" -->
+                                                    <SelectTrigger class="text-black !bg-[#D6D6D6]">
+                                                        <SelectValue placeholder="Код страны" class="text-black/80" />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        <SelectGroup>
+                                                            <SelectLabel>Код страны</SelectLabel>
+                                                            <SelectItem v-for="(code, index) in number_codes"
+                                                                :key="index" :value="code.id">
+                                                                {{ code.value }}
+                                                            </SelectItem>
+                                                        </SelectGroup>
+                                                    </SelectContent>
+                                                </Select>
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -319,17 +338,16 @@ function onSubmit(values: any) {
                                     Назад
                                 </Button>
                                 <div class="flex items-center gap-3">
-                                    <Button v-if="stepIndex !== 4 && stepIndex !== 3"
-                                        type="button" :disabled="isNextDisabled" size="sm"
-                                        @click="meta.valid && nextStep()"
+                                    <Button v-if="stepIndex !== 4" type="button"
+                                        :disabled="!meta.valid" size="sm" @click="meta.valid && nextStep()"
                                         class="px-12 py-6 text-lg bg-[#1375E1] text-white hover:bg-blue-500">
                                         Далее
                                     </Button>
-                                    <Button :type="meta.valid ? 'button' : 'submit'" v-if="stepIndex === 3"
+                                    <!-- <Button :type="meta.valid ? 'button' : 'submit'" v-if="stepIndex === 3"
                                         @click="nextStep()"
                                         class="px-12 py-6 text-lg bg-[#1375E1] text-white hover:bg-blue-500">
                                         Далее
-                                    </Button>
+                                    </Button> -->
                                     <Button v-if="stepIndex === 4" size="sm" type="submit"
                                         class="px-12 py-6 text-lg bg-[#1375E1] text-white hover:bg-blue-500">
                                         Готово
