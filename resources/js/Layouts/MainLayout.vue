@@ -1,5 +1,6 @@
 <script setup lang=ts>
 import Header from '@/Components/Main/Header.vue';
+import Login from '@/Components/Main/AuthModal/Login.vue';
 import {
     Avatar,
     AvatarFallback,
@@ -86,6 +87,7 @@ import {
 } from 'lucide-vue-next'
 import { PrimitiveProps } from 'radix-vue';
 import { computed, HTMLAttributes, ref } from 'vue'
+import Image from '@/Components/Common/Image.vue';
 
 // This is sample data.
 const data = {
@@ -221,11 +223,10 @@ const data = {
 <template>
     <SidebarProvider class="bg-[#0C202E] relative">
         <Sidebar collapsible="icon">
-            <SidebarTrigger class="-right-4 top-[15%] absolute z-40 hover:bg-transparent w-7 h-7" />
+            <SidebarTrigger class="-right-5 top-[15%] absolute z-40 hover:bg-transparent w-7 h-7 transition-all" />
             <SidebarHeader class="mb-5 shadow-md shadow-black/40">
                 <div class="w-full py-3 flex justify-center items-center">
-                    <!-- <div class="w-8 h-8 bg-white rounded-full"></div> -->
-                    <SpadeIcon class="" />
+                    <Image :src="'/img/sidebarHeader.svg'" />
                 </div>
             </SidebarHeader>
             <SidebarContent>
@@ -258,19 +259,23 @@ const data = {
                         </Collapsible>
                     </SidebarMenu>
                 </SidebarGroup>
-                <SidebarGroup v-else class="p-4 border-b border-[#1375E1] space-y-4">
-                    <SidebarGroupLabel class="px-0 text-lg inline text-center" :class="cn(
-                        'duration-100',
-                        'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
-                        props.class)">Авторизация</SidebarGroupLabel>
-                    <h3 class="text-center" :class="cn(
-                        'duration-100',
-                        'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
-                        props.class)">Авторизируйтесь, чтобы начать играть прямо сейчас!</h3>
-                    <Button class="bg-[#1375E1] text-white hover:bg-blue-500" :class="cn(
-                        'duration-100',
-                        'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
-                        props.class)">Войти в аккаунт</Button>
+                <SidebarGroup v-else class="px-4">
+                    <div class="py-4 border-b border-[#1375E1] text-center space-y-4">
+                        <SidebarGroupLabel class="px-0 text-lg inline text-center" :class="cn(
+                            'duration-100',
+                            'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
+                            props.class)">Авторизация</SidebarGroupLabel>
+                        <h3 class="text-center" :class="cn(
+                            'duration-100',
+                            'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
+                            props.class)">Авторизируйтесь, чтобы начать играть прямо сейчас!</h3>
+                        <Login>
+                            <Button class="bg-[#1375E1] text-white hover:bg-blue-500" :class="cn(
+                                'duration-100',
+                                'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
+                                props.class)">Войти в аккаунт</Button>
+                        </Login>
+                    </div>
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter>

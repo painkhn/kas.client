@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Logo from '../Common/Logo.vue';
 import Button from '../ui/button/Button.vue';
 import Login from './AuthModal/Login.vue';
 import Register from './AuthModal/Register.vue';
@@ -6,9 +7,9 @@ import Register from './AuthModal/Register.vue';
 
 <template>
     <header
-        class="w-full min-h-[72px] bg-gradient-to-r from-[#0C202E] to-[#2c3a44] flex items-center justify-between px-10">
-        <div class="logo text-2xl font-semibold">
-            NORMAL
+        class="w-full min-h-[90px] bg-gradient-to-r from-[#0C202E] to-[#2c3a44] flex items-center justify-between px-10">
+        <div class="logo">
+            <Logo />
         </div>
         <div class="space-x-4">
             <Login>
