@@ -15,7 +15,7 @@ const { toggleSidebar } = useSidebar()
 
 <template>
   <Button data-sidebar="trigger" variant="ghost" size="icon" :class="cn('!w-9 duration-200', 'group-data-[collapsible=icon]:rotate-180', props.class)" @click="toggleSidebar">
-    <Image :src="'/img/sidebarTrigger.svg'" class="shadow shadow-black rounded-full" />
+    <slot />
     <span class="sr-only">Toggle Sidebar</span>
   </Button>
 </template>

@@ -37,7 +37,7 @@ const delegatedProps = computed(() => {
     </TooltipTrigger>
     <TooltipContent
       side="right"
-      align="center"
+      align="start"
       :hidden="state !== 'collapsed' || isMobile"
     >
       <template v-if="typeof tooltip === 'string'">
