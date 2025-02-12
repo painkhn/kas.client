@@ -10,7 +10,7 @@ const props = defineProps<{
         amount: string
         address: string
         network: string
-        currency: string
+        name: string
     }
 }>()
 
@@ -79,10 +79,10 @@ const handleSubmit = () => {
                             <p>{{ props.withdrawalData.address }}</p>
                         </li>
                         <li>
-                            <p>{{ props.withdrawalData.network }}</p>
+                            <p>{{ props.withdrawalData.network }}</p> <!-- Сеть -->
                         </li>
                         <li>
-                            <p>{{ props.withdrawalData.currency }}</p>
+                            <p>{{ props.withdrawalData.name }}</p> <!-- Валюта -->
                         </li>
                         <li>
                             <p>{{ props.withdrawalData.amount }}</p>

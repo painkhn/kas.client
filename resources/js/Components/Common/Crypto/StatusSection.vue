@@ -32,16 +32,18 @@ const emit = defineEmits<{
                 <p class="text-lg font-semibold">Не удалось выполнить вывод средств</p>
             </template>
         </div>
-        <div class="w-[90%] mx-auto space-y-5 mt-5">
-            <p class="text-center font-semibold opacity-80">
-                {{ status === 'completed' ? 'Такие транзакции обычно занимают около 30 минут' : 'Попробуйте еще раз или свяжитесь со службой поддержки' }}
-            </p>
-            <Button @click="emit('close')" class="w-full py-6 text-lg bg-[#1375E1] text-white hover:bg-blue-500">
-                {{ status === 'completed' ? 'Готово' : 'Служба поддержки' }}
-            </Button>
-            <Button @click="emit('close')" class="w-full py-6 text-lg bg-[#1F2E3E] text-white hover:bg-[#071722]">
-                Вернуться в кошелёк
-            </Button>
+        <div class="w-full pb-5 py-5 mt-5 bg-[#0c202f]">
+            <div class="w-[90%] mx-auto space-y-5">
+                <p class="text-center font-semibold opacity-80">
+                    {{ status === 'completed' ? 'Такие транзакции обычно занимают около 30 минут' : 'Попробуйте еще раз или свяжитесь со службой поддержки' }}
+                </p>
+                <Button @click="emit('close')" class="w-full py-6 text-lg bg-[#1375E1] text-white hover:bg-blue-500">
+                    {{ status === 'completed' ? 'Готово' : 'Служба поддержки' }}
+                </Button>
+                <Button @click="emit('close')" class="w-full py-6 text-lg bg-[#1F2E3E] text-white hover:bg-[#071722]">
+                    Вернуться в кошелёк
+                </Button>
+            </div>
         </div>
     </div>
 </template>

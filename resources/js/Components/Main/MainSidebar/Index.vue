@@ -198,11 +198,11 @@ const data = {
             </div>
         </SidebarHeader>
         <SidebarContent class="px-4 space-y-4">
-            <HeadData v-if="!$page.props.auth.user" class="border-b border-black/40 px-0 py-4" />
+            <HeadData v-if="$page.props.auth.user" class="border-b border-black/40 px-0 py-4" />
 
-            <MiddleData v-if="!$page.props.auth.user" class="px-2" />
+            <MiddleData v-if="$page.props.auth.user" class="px-2" />
 
-            <FooterData v-if="!$page.props.auth.user" class="pt-4 border-t border-black/40" />
+            <FooterData v-if="$page.props.auth.user" class="pt-4 border-t border-black/40" />
 
             <SidebarGroup v-else class="px-4">
                 <div class="py-4 border-b border-[#1375E1] text-center space-y-4">

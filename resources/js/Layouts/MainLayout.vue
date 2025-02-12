@@ -12,6 +12,7 @@ import RightSidebarProvider from '@/Components/Main/RightSidebar/RightSidebarPro
 import SidebarRightTrigger from '@/Components/Main/RightSidebar/SidebarRightTrigger.vue';
 import { Bell, ChevronDown, Globe, User, User2 } from 'lucide-vue-next';
 import { ref } from 'vue';
+import Footer from '@/Components/Main/Footer.vue';
 
 // Состояние для отслеживания активного сайдбара
 const activeSidebar = ref<'profile' | 'notifications' | 'language'>('profile');
@@ -51,11 +52,12 @@ const showLanguage = () => {
                         </SidebarRightTrigger>
                     </div>
                 </Header>
-                <div class="px-10">
+                <div>
                     <slot />
                 </div>
+                <Footer />
             </SidebarInset>
-            <UserSidebar v-if="!$page.props.auth.user" :active-sidebar="activeSidebar" />
+            <UserSidebar v-if="$page.props.auth.user" :active-sidebar="activeSidebar" />
         </RightSidebarProvider>
 
     </SidebarProvider>

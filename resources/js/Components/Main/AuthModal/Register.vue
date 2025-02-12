@@ -14,14 +14,6 @@ import {
     DialogTrigger,
 } from '@/Components/ui/dialog'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/Components/ui/form'
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '@/Components/ui/select'
 import { Stepper, StepperDescription, StepperItem, StepperSeparator, StepperTitle, StepperTrigger } from '@/Components/ui/stepper'
 import { toast } from '@/Components/ui/toast'
 import { toTypedSchema } from '@vee-validate/zod'
@@ -100,7 +92,7 @@ const number_codes = [
 
 <template>
     <Dialog>
-        <DialogTrigger>
+        <DialogTrigger class="w-full bg-[#1375E1] py-4 rounded-md text-white hover:bg-blue-500 transition-all">
             <slot />
         </DialogTrigger>
         <DialogContent class="bg-[#061724] p-0 gap-0 max-w-4xl h-[550px]">

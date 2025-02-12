@@ -17,27 +17,21 @@ import CryptoPopover from '../Common/Crypto/CryptoPopover.vue';
         </div>
         <div class="flex items-center">
             <CryptoSelect />
-            <!-- <div class="p-2 bg-blue-500 rounded-r">
-                <Wallet />
-            </div> -->
-            <!-- <CryptoPopover>
-                <div class="p-2 bg-blue-500 rounded-r">
-                    <Wallet />
-                </div>
-            </CryptoPopover> -->
             <CryptoModal>
                 <div class="p-2 bg-blue-500 rounded-r">
                     <Wallet />
                 </div>
             </CryptoModal>
         </div>
-        <div class="space-x-4" v-if="$page.props.auth.user">
+        <div class="space-x-4 flex" v-if="!$page.props.auth.user">
             <Login>
                 <Button variant="link">Войти</Button>
             </Login>
-            <Register>
-                <Button class="bg-[#1375E1] text-white hover:bg-blue-500">Зарегистрироваться</Button>
-            </Register>
+            <div class="w-[200px]">
+                <Register>
+                    <span class="font-semibold">Зарегистрироваться</span>
+                </Register>
+            </div>
         </div>
         <div v-else>
             <slot />

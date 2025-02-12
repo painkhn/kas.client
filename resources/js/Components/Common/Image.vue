@@ -12,6 +12,6 @@ const imageSrc = computed(() => props.src);
 
 <template>
     <div>
-        <img :src="imageSrc" alt="Image" class="image" />
+        <img :src="imageSrc" alt="Image" class="image w-full h-full" />
     </div>
 </template>
