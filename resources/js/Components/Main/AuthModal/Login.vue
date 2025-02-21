@@ -12,6 +12,22 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/Components/ui/dialog'
+import { useForm } from '@inertiajs/vue3';
+
+
+const form = useForm({
+    email: '',
+    password: '',
+    remember: false,
+});
+
+const submit = () => {
+    form.post(route('login'), {
+        onFinish: () => {
+            form.reset('password');
+        },
+    });
+};
 </script>
 
 <template>
@@ -27,10 +43,10 @@ import {
                 </DialogDescription>
             </DialogHeader>
 
-            <form action="" class="space-y-4 grid grid-cols-1">
-                <Input placeholder="Email" type="email"
+            <form @submit.prevent="submit" class="space-y-4 grid grid-cols-1">
+                <Input placeholder="Email" type="email" v-model="form.email"
                     class="shadow shadow-black border-0 bg-[#D6D6D6] text-black placeholder:text-black/80" required />
-                <Input placeholder="Password" type="password"
+                <Input placeholder="Password" type="password" v-model="form.password"
                     class="shadow shadow-black border-0 bg-[#D6D6D6] text-black placeholder:text-black/80" required />
                 <a class="text-blue-600 underline text-sm block ml-auto" href="#!">Забыли пароль?</a>
                 <div class="py-3"></div>

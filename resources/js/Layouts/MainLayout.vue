@@ -41,13 +41,13 @@ const showLanguage = () => {
 
                 <Header>
                     <div class="flex items-center gap-4">
-                        <SidebarRightTrigger v-if="!$page.props.auth.user" @click="showProfile">
+                        <SidebarRightTrigger v-if="$page.props.auth.user" @click="showProfile">
                             <User class="!w-6 !h-6" :class="activeSidebar === 'profile' ? 'text-blue-500' : ''" />
                         </SidebarRightTrigger>
-                        <SidebarRightTrigger v-if="!$page.props.auth.user" @click="showNotifications">
+                        <SidebarRightTrigger v-if="$page.props.auth.user" @click="showNotifications">
                             <Bell class="!w-6 !h-6" :class="activeSidebar === 'notifications' ? 'text-blue-500' : ''" />
                         </SidebarRightTrigger>
-                        <SidebarRightTrigger v-if="!$page.props.auth.user" @click="showLanguage">
+                        <SidebarRightTrigger v-if="$page.props.auth.user" @click="showLanguage">
                             <Globe class="!w-6 !h-6" :class="activeSidebar === 'language' ? 'text-blue-500' : ''" />
                         </SidebarRightTrigger>
                     </div>

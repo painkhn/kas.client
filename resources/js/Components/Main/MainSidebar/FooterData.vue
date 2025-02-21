@@ -29,7 +29,7 @@ const data = {
 </script>
 
 <template>
-    <SidebarGroup v-if="!$page.props.auth.user">
+    <SidebarGroup v-if="$page.props.auth.user">
         <SidebarMenu>
             <Collapsible v-for="item in data.navMain" :key="item.title" as-child :default-open="item.isActive"
                 class="group/collapsible">

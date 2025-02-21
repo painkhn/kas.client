@@ -83,6 +83,23 @@ function onSubmit(values: any) {
     });
 }
 
+import { Head, Link, useForm } from '@inertiajs/vue3';
+
+const form = useForm({
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+});
+
+const submit = () => {
+    form.post(route('register'), {
+        onFinish: () => {
+            form.reset('password', 'password_confirmation');
+        },
+    });
+};
+
 const number_codes = [
     { id: '1', value: '1' },
     { id: '2', value: '2' },
@@ -106,7 +123,7 @@ const number_codes = [
                 :validation-schema="toTypedSchema(formSchema[stepIndex - 1])">
                 <Stepper v-slot="{ isNextDisabled, isPrevDisabled, nextStep, prevStep }" v-model="stepIndex"
                     class="block w-full h-full !max-h-full">
-                    <form class="flex h-full !max-h-full" @submit="(e) => {
+                    <form class="flex h-full !max-h-full" @submit.prevent="submit" @submit="(e) => {
                         e.preventDefault()
                         validate()
 
@@ -195,7 +212,8 @@ const number_codes = [
                                 <FormField v-slot="{ componentField }" name="fullName">
                                     <FormItem v-auto-animate>
                                         <FormControl>
-                                            <Input type="text" v-bind="componentField" placeholder="Имя пользователя"
+                                            <Input type="text" v-model="form.name" v-bind="componentField"
+                                                placeholder="Имя пользователя"
                                                 class="!bg-[#D6D6D6] text-black placeholder:text-black/80" />
                                         </FormControl>
                                         <FormMessage />
@@ -205,7 +223,8 @@ const number_codes = [
                                 <FormField v-slot="{ componentField }" name="email">
                                     <FormItem v-auto-animate>
                                         <FormControl>
-                                            <Input type="email " v-bind="componentField" placeholder="Email"
+                                            <Input type="email" v-model="form.email" v-bind="componentField"
+                                                placeholder="Email"
                                                 class="text-black !bg-[#D6D6D6] placeholder:text-black/80" />
                                         </FormControl>
                                         <FormMessage />
@@ -249,7 +268,7 @@ const number_codes = [
                                 <FormField v-slot="{ componentField }" name="password">
                                     <FormItem v-auto-animate>
                                         <FormControl>
-                                            <Input type="password" v-bind="componentField"
+                                            <Input type="password" v-bind="componentField" v-model="form.password"
                                                 class="text-black !bg-[#D6D6D6] placeholder:text-black/80"
                                                 placeholder="Пароль" />
                                         </FormControl>
@@ -261,6 +280,7 @@ const number_codes = [
                                     <FormItem v-auto-animate>
                                         <FormControl>
                                             <Input type="password" v-bind="componentField"
+                                                v-model="form.password_confirmation"
                                                 class="text-black !bg-[#D6D6D6] placeholder:text-black/80"
                                                 placeholder="Подтвердите пароль" />
                                         </FormControl>
