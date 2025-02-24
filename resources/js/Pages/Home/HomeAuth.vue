@@ -12,6 +12,7 @@ import { Link } from '@inertiajs/vue3';
 import { ChevronRight, Crown, Flame, History } from 'lucide-vue-next';
 import { ref } from 'vue';
 import Cashback from './Cashback.vue';
+import PrivilegeModal from '@/Components/Main/HomeAuth/PrivilegeModal/Index.vue'
 
 const games = ref([
     { image: '/img/exampleGameImage.jpeg' },
@@ -79,9 +80,11 @@ const popular = ref([
                     </div>
                 </div>
             </div>
-            <Button class="w-full py-6 text-base text-white bg-[#346bb3] hover:bg-blue-500">
-                Узнать больше о VIP привилегиях
-            </Button>
+            <!-- <Button class="w-full py-6 text-base text-white bg-[#346bb3] hover:bg-blue-500">
+
+            </Button> -->
+            <PrivilegeModal>Узнать больше о VIP
+                привилегиях</PrivilegeModal>
         </div>
         <div class="flex items-center mb-20">
             <Image :src="'/img/separator.svg'" class="!w-2" />
