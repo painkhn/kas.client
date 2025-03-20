@@ -8,7 +8,7 @@ import CircleProgress from '../CircleProgress.vue';
 
 <template>
     <div class="w-2/3 mx-auto">
-        <div class="w-full px-6 pb-9 bg-[#0c202f] py-4 shadow-[0_0_15px_#5d81a7] rounded-md">
+        <div class="w-full px-6 bg-[#0c202f] py-2 shadow-[0_0_15px_#5d81a7] rounded-md">
             <div class="flex justify-between items-center text-[#97aeca] font-semibold mb-8">
                 <p class="text-xl">
                     {{ $page.props.auth.user.name }}
